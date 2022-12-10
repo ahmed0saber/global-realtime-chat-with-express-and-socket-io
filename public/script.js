@@ -65,5 +65,3 @@ function formatDate(givenDate) {
 
     return formattedDate
 }
-
-// TODO: store messages
