@@ -11,19 +11,16 @@
     <link rel='stylesheet' href='./style.css'>
 </head>
 <body>
-    <div class="chat-container">
-        <div class="msg-container">
-            <p>user: ahmed0saber</p>
-            <p>msg: Hello</p>
-            <p>date: 5/7/2001</p>
-        </div>
-    </div>
+    <header>
+        <h3>Real Time Chat</h3>
+    </header>
+    <div class="chat-container"></div>
     <div class="controls-container">
         <div class="inputs-container">
             <input type="text" class="username-input" placeholder="Enter your name">
             <input type="text" class="msg-input" placeholder="Enter your message">
         </div>
-        <button onclick="sendMsg()">click me</button>
+        <button onclick="sendMsg()">send</button>
     </div>
 </body>
 <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>

@@ -10,6 +10,17 @@ socket.on("connection", () => {
 })
 
 const sendMsg = () => {
+    let errors = ""
+    if(usernameInput.value.trim().length < 1){
+        errors += "username is required\n"
+    }
+    if(msgInput.value.trim().length < 1){
+        errors += "message is required\n"
+    }
+    if(errors.length > 0){
+        alert(errors.slice(0, -1))
+        return
+    }
     const currentDate = new Date
     socket.emit("msg", {
         username: usernameInput.value.trim(),
@@ -22,9 +33,9 @@ socket.on("msg", data => {
     console.log(data)
     chatContainer.innerHTML += `
     <div class="msg-container">
-        <p>user: ${data.username}</p>
-        <p>msg: ${data.msg}</p>
-        <p>date: ${data.date}</p>
+        <p><b>user:</b> ${data.username}</p>
+        <p><b>msg:</b> ${data.msg}</p>
+        <p><b>date:</b> ${data.date}</p>
     </div>
     `
 })
@@ -53,7 +64,4 @@ function formatDate(givenDate) {
     return formattedDate
 }
 
-// TODO: style the page
-// TODO: validation
-// TODO: secure messages
 // TODO: store messages

@@ -19,10 +19,19 @@ server.listen(8080, () => {
 })
 
 io.on("connection", socket => {
-    console.log(socket.id)
-
     socket.on("msg", data => {
-        console.log(data)
-        io.emit("msg", data)
+        if(data.username.trim().length < 1 || data.msg.trim().length < 1 || data.date.trim().length < 1){
+            return
+        }
+
+        io.emit("msg", {
+            username: removeHtmlTags(data.username),
+            msg: removeHtmlTags(data.msg),
+            date: removeHtmlTags(data.date)
+        })
     })
 })
+
+const removeHtmlTags = (str) => {
+    return str.replace(/<\/?\w+>/g, "")
+}
