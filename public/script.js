@@ -27,6 +27,8 @@ const sendMsg = () => {
         msg: msgInput.value.trim(),
         date: formatDate(currentDate)
     })
+    usernameInput.value = ""
+    msgInput.value = ""
 }
 
 socket.on("msg", data => {

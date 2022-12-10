@@ -14,7 +14,15 @@
     <header>
         <h3>Real Time Chat</h3>
     </header>
-    <div class="chat-container"></div>
+    <div class="chat-container">
+        <% messages.forEach(message => { %>
+            <div class="msg-container">
+                <p><b>user:</b> <%= message.username %></p>
+                <p><b>msg:</b> <%= message.msg %></p>
+                <p><b>date:</b> <%= message.date %></p>
+            </div>
+        <% }) %>
+    </div>
     <div class="controls-container">
         <div class="inputs-container">
             <input type="text" class="username-input" placeholder="Enter your name">
