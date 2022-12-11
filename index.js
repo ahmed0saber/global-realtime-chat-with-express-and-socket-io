@@ -7,6 +7,8 @@ const io = require("socket.io")(server, {
     }
 })
 const Chat = require('./models/mySchema')
+const dotenv = require('dotenv');
+dotenv.config();
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
@@ -23,7 +25,7 @@ app.get("/", (req, res) => {
 
 const mongoose = require('mongoose')
 mongoose.set('strictQuery', false)
-mongoose.connect('mongodb+srv://ahmed0saber:ahmed0saber@cluster0.qrdg3nu.mongodb.net/myData?retryWrites=true&w=majority')
+mongoose.connect(`mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.qrdg3nu.mongodb.net/myData?retryWrites=true&w=majority`)
     .then(() => {
         server.listen(8080, () => {
             console.log(`Example app listening on http://localhost:8080`)
